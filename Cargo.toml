@@ -13,6 +13,5 @@ chrono-tz = "0.8.3"
 jni = "0.21.1"
 # 用于表格展示 比如采集cpu等
 tabled = "0.12.2"
-tabled_derive = "0.6.0"
 # perf 性能工具
 perf_monitor = "0.2.0"

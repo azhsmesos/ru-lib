@@ -676,7 +676,6 @@ dependencies = [
  "jni",
  "perf_monitor",
  "tabled",
- "tabled_derive",
  "tracing",
  "tracing-subscriber",
 ]

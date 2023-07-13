@@ -2,11 +2,13 @@
 mod time_util;
 mod hash_util;
 mod perf_util;
+mod desk;
 
 use std::env;
 use tracing_subscriber::fmt;
 use tracing_subscriber::layer::SubscriberExt;
 use tracing_subscriber::util::SubscriberInitExt;
+use crate::desk::desk;
 use crate::hash_util::{jh, rh};
 use crate::perf_util::default;
 use crate::time_util::{conversion};
@@ -39,6 +41,9 @@ fn main() {
         },
         "perf" => {
             default();
+        }
+        "desk" => {
+            desk();
         }
         _ => {
             tracing::warn!("无效的命令")

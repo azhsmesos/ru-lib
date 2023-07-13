@@ -18,7 +18,7 @@ fn string_to_long(str: &str) {
 
 fn long_to_string(str: &str) {
     let beijing_time_zone = FixedOffset::east_opt(8 * 3600).unwrap();
-    if str.eq("default") {
+    if str.eq("default") || str.is_empty() {
         let now = Utc::now();
         let beijing_time = now.with_timezone(&beijing_time_zone);
         tracing::info!("【时间戳: {}, 时间: {} 】", beijing_time, beijing_time.timestamp_millis());
