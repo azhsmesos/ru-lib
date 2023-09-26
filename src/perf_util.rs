@@ -17,16 +17,12 @@ pub fn default() {
 
     let usage_p = stat_p.cpu().unwrap() * 100f64;
     let usage_t = stat_t.cpu().unwrap() * 100f64;
-
     // mem
     let mem_info = get_process_memory_info().unwrap();
-
     // fd
     let fd_num = fd_count_cur().unwrap();
-
     // io
     let io_stat = get_process_io_stats().unwrap();
-    tracing::info!("[IO] io-in: {} bytes, io-out: {} bytes", io_stat.read_bytes, io_stat.write_bytes);
 
     let cpu_info = format!("core Number: {}\nprocess usage: {:.2}%\ncurrent thread usage: {:.2}%", core_num, usage_p, usage_t);
     let mem_info = format!("memory used: {} bytes({} mb)\nvirtural memory used: {} bytes", mem_info.resident_set_size,

@@ -3,6 +3,9 @@ mod time_util;
 mod hash_util;
 mod perf_util;
 mod desk;
+mod search;
+mod profiler;
+mod common;
 
 use std::env;
 use tracing_subscriber::fmt;
@@ -11,6 +14,7 @@ use tracing_subscriber::util::SubscriberInitExt;
 use crate::desk::desk;
 use crate::hash_util::{jh, rh};
 use crate::perf_util::default;
+use crate::profiler::execute_profiler;
 use crate::time_util::{conversion};
 
 fn main() {
@@ -29,6 +33,7 @@ fn main() {
         .iter()
         .map(|s| s as &str)
         .collect::<Vec<&str>>().join(" ");
+
     match option.as_str() {
         "time" => {
             conversion(&param);
@@ -45,9 +50,17 @@ fn main() {
         "desk" => {
             desk();
         }
+       "s" => {
+
+       },
         _ => {
-            tracing::warn!("无效的命令")
-        }
+            if option.starts_with("profiler") {
+                execute_profiler(&param);
+                return;
+            }
+
+            tracing::warn!("【无效的命令】");
+        },
     }
 }
 
